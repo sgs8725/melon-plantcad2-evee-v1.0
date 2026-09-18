@@ -1,0 +1,13 @@
+{
+  "_comment": "实验轨道 -> 扩展注释类 配置示例。复制为 data/tracks.json 并填真实路径后，由 scripts/train_annotation_tracks.py 使用。type=bed 取峰区；type=bigwig 需 pyBigWig。二值模式(--mode binary,默认): bed 在峰内=1, bigwig 按 threshold/quantile 二值化。回归模式(--mode regression): bed 用第4列信号(用 tracks_to_bed.py --keep-signal 生成 BED4), bigwig 用原始信号。chrom 须与基因组 FASTA 命名一致(必要时先用 tracks_to_bed.py --strip-chr/--chrom-map/--liftover-chain 归一化)。",
+  "chrom": "1",
+  "tracks": [
+    {"class": "tfbs_MYB",   "path": "assets/tracks/MYB_dapseq.bed",   "type": "bed"},
+    {"class": "tfbs_NAC",   "path": "assets/tracks/NAC_dapseq.bed",   "type": "bed"},
+    {"class": "tfbs_AP2ERF","path": "assets/tracks/ERF_dapseq.bed",   "type": "bed"},
+    {"class": "chromatin_accessible_flesh", "path": "assets/tracks/flesh_atac.bw", "type": "bigwig", "quantile": 0.90},
+    {"class": "chromatin_accessible_rind",  "path": "assets/tracks/rind_atac.bw",  "type": "bigwig", "quantile": 0.90},
+    {"class": "cre_high_strength",          "path": "assets/tracks/starrseq_peaks.bed", "type": "bed"},
+    {"class": "conserved_cross_species",    "path": "assets/tracks/phyloP.bw", "type": "bigwig", "threshold": 0.0}
+  ]
+}

@@ -1,0 +1,28 @@
+# ===== macOS 资源分叉垃圾文件（从 Mac 拷贝到 Windows 时带来的 AppleDouble 文件，必须忽略）=====
+._*
+.DS_Store
+
+# ===== Python 缓存 / 打包产物 =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# ===== Node 依赖（仅源码 generate_docx.js 入库，依赖不入库）=====
+node_modules/
+
+# ===== 压缩包 / 运行时产物 =====
+*.zip
+outputs/
+logs/
+tmp/
+
+# ===== 文档：保留 Markdown，二进制 docx 可选忽略（已有 .md 版本）=====
+# TECHNICAL_REPORT.docx
+
+# ===== 模型权重：assets/*.safetensors 当前仅 1.1M，可直接入库；
+#       若日后换成 PlantCAD2 基础模型等大权重，请改用 Git LFS 并取消下一行注释
+# assets/*.safetensors

@@ -1,0 +1,12 @@
+validation_item,status,metric,value,note
+PlanA_CmTST2,passed,mean_effect,0.7922,"Sugar accumulation gene, 4/5 variants >0.7"
+PlanA_SSC_QTL,passed,mean_effect,0.4366,"SSC/sucrose QTL, 35/104 high-effect (33.7%)"
+PlanA_CmBt_region,passed,mean_effect,0.5505,"Bitterness gene nearby region"
+PlanA_CmOr,partial,nearby_mean,0.4459,"No direct SNP in gene region"
+PlanA_CmACS7,partial,nearby_mean,0.3768,"No direct SNP in gene region"
+PlanA_CmAAT,partial,nearby_mean,0.3578,"No direct SNP in gene region"
+PlanB_chr01_enrichment,passed,unfavorable_pct,34.9,"Rank #1 - domestication hotspot"
+PlanB_chr09_enrichment,passed,unfavorable_pct,34.9,"Rank #1 - contains CmOr/CmBt"
+PlanB_chr08,moderate,unfavorable_pct,33.3,"Rank #3"
+PlanB_chr11,moderate,unfavorable_pct,32.7,"Rank #4"
+final_conclusion,passed,summary,"Model shows reasonable effect discrimination for known functional loci","Validated with published literature GWAS/QTL data"

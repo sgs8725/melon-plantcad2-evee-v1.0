@@ -1,0 +1,23 @@
+{
+  "d_model": 768,
+  "annotations": [
+    "region_CDS",
+    "region_intron",
+    "region_5UTR",
+    "region_3UTR",
+    "region_intergenic",
+    "region_exon_boundary",
+    "splice_donor",
+    "splice_acceptor",
+    "codon_pos1",
+    "codon_pos2",
+    "codon_pos3",
+    "start_codon",
+    "stop_codon",
+    "frameshift_risk",
+    "promoter_core",
+    "promoter_proximal",
+    "terminator"
+  ],
+  "n_annotations": 17
+}

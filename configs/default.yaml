@@ -1,0 +1,69 @@
+# configs/default.yaml —— Melon-PlantCAD2-EVEE 默认配置
+
+# ---- 资源路径 ----
+paths:
+  # PlantCAD2-Small (88M, hidden 768)，与下方 encoder.d_model 默认一致。
+  # 也可填 HuggingFace 名直接联网加载：kuleshov-group/PlantCAD2-Small-l24-d0768
+  # 更大模型见 download_data.py --large（Medium hidden=1024 / Large hidden=1536，
+  # 切换后需同步修改 encoder.d_model 与各探针维度）。
+  plantcad2_model: assets/plantcad2
+  # PlantCAD2 分词器随模型附带（trust_remote_code + AutoTokenizer），
+  # 无需单独的 tokenizer.json。
+  # 默认主源：scripts/download_data.py 下载的 DHL92（Ensembl Plants release-62,
+  #   melonv4.0；Garcia-Mas et al. PNAS 2012 / Ruggieri et al. 2018 v4.0）。加
+  #   `--use-ncbi` 改用 NCBI GCA_902497455.1 备选；两套文件可并存，下游流水线
+  #   不依赖具体组装版本。
+  genome: assets/genome/melon_DHL92.fa
+  gff: assets/genome/melon_DHL92.gff3
+  vcf: assets/variants/melon_variants.vcf.gz
+
+# ---- 基础模型层（PlantCAD2，冻结）----
+encoder:
+  layer: -1          # 取最后一层隐藏状态 hidden_states[-1]，形状 [B, L, 2*d]
+  d_model: 768       # PlantCAD2-Small hidden_size（取 RC 双向后单侧维度）
+  dtype: bfloat16
+  # PlantCAD2 = Caduceus + Mamba2，双向、反向互补(RC)等变、掩码语言模型(MLM)。
+  # 单次前向即同时给出正链与反向互补链表征（拼在最后一维 [: d] / [d :]），
+  # 取二者均值得到 RC 不变嵌入。
+
+# ---- 变异窗口 ----
+variant:
+  window: 8192       # 以变异为中心的窗口长度(bp)；PlantCAD2 上下文硬上限 8192
+  topk: 256          # 余弦发散 Top-K 位置数（EVEE 默认 256）
+
+# ---- 协方差探针（EVEE，base-model 无关）----
+covariance_probe:
+  d_hidden: 64       # 协方差矩阵边长（EVEE 默认 64）
+  d_probe: 128       # 因式读出中间维（EVEE 默认 128）
+  n_sqrtm_iters: 3   # Newton-Schulz 迭代步数
+  eps: 0.001         # 协方差对角正则
+
+# ---- 零样本变异打分（PlantCAD2 招牌能力）----
+zeroshot:
+  enabled: true      # 掩码变异位点，比较 logP(alt)-logP(ref) 的对数似然比 (LLR)
+
+# ---- 训练 ----
+train:
+  task: classification    # classification | regression
+  epochs: 30
+  lr: 0.001
+  batch_size: 32
+  val_frac: 0.2
+  seed: 2024
+
+# ---- 育种目标性状（regression 模式下 n_outputs 应等于此列表长度）----
+# 甜瓜以果实为采收器官，性状覆盖产量、品质核心(糖度)、果肉色、风味、采后、抗病、抗逆。
+traits:
+  - yield
+  - fruit_weight
+  - sugar_content
+  - flesh_color
+  - aroma
+  - shelf_life
+  - disease_resist
+  - stress_tolerance
+
+# ---- LLM 机制解释 ----
+llm:
+  model: claude-opus-4-7
+  enabled: false     # 设 true 并配置 ANTHROPIC_API_KEY 后启用

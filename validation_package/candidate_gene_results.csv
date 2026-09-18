@@ -1,0 +1,8 @@
+locus_id,gene,chromosome,region_start,region_end,contig,trait,variant_count,mean_effect,high_effect_count,high_effect_pct,conclusion
+LOC01,CmOr,chr9,20540000,20560000,contig8,Flesh color (orange),0,N/A,0,N/A,"GBS coverage insufficient (nearby 160 vars, mean=0.4459)"
+LOC03,CmACS7,chr2,16340000,16343000,contig2,Fruit length/shape,0,N/A,0,N/A,"GBS coverage insufficient (nearby 95 vars, mean=0.3768)"
+LOC04,SSC_QTL,chr5,1500000,2500000,contig12,"Soluble solids / sucrose",104,0.4366,35,33.7%,moderate-high
+LOC05,CmTST2,chr12,15500000,15700000,contig10,Sugar accumulation,5,0.7922,4,80%,very_high
+LOC15,CmCLV3,chr12,15450000,15460000,contig10,"Carpel number / fruit shape",0,N/A,0,N/A,"GBS coverage insufficient (nearby 43 vars, mean=0.4025)"
+LOC16,CmAAT,chr11,7900000,8100000,contig11,Aroma,0,N/A,0,N/A,"GBS coverage insufficient (nearby 40 vars, mean=0.3578)"
+LOC17,CmBt,chr9,21780000,21790000,contig8,Flesh bitterness,103,0.5505,N/A,N/A,high

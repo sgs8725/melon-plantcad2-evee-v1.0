@@ -1,0 +1,7 @@
+{
+  "d_model": 768,
+  "d_hidden": 64,
+  "d_probe": 128,
+  "n_outputs": 2,
+  "task": "classification"
+}

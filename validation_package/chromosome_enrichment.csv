@@ -1,0 +1,14 @@
+rank,contig,standard_chr,total_variants,unfavorable_count,unfavorable_pct,mean_effect,zero_effect_pct,note
+1,contig7,chr01,3882,1355,34.9,0.4436,15.9,domestication_selection_hotspot
+1,contig8,chr09,1936,675,34.9,0.4442,14.0,"contains CmOr, CmBt"
+3,contig3,chr08,1947,648,33.3,0.4204,15.9,
+4,contig11,chr11,1531,500,32.7,0.4200,16.1,
+5,contig5,chr04,3197,1031,32.2,0.3263,28.9,
+6,contig6,chr07,2242,719,32.1,0.4162,17.2,
+7,contig4,chr06,2263,705,31.2,0.4049,16.9,
+8,contig9,chr03,2363,735,31.1,0.4011,16.7,
+9,contig12,chr05,4443,1370,30.8,0.4096,17.1,
+10,contig13,chr10,1749,538,30.8,0.4038,17.3,
+11,contig2,chr02,2484,742,29.9,0.4052,16.8,
+12,contig10,chr12,1988,572,28.8,0.3941,16.9,
+13,contig1,chr01,27,6,22.2,0.2072,55.6,"low_coverage_only_27_variants"
